@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe&display=swap');
+:root {
+    --bg-color: #e5caff;
+    --text-color: #000000;
+    --link-color: #4a00e0;
+  }
+  
+  /* Mode sombre par défaut si l'utilisateur préfère */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --link-color: #bb86fc;
+    }
+  }
+  
+  /* Utilisation des variables */
+  body {
+    
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  h1, h2, h3 {
+    color: inherit;
+  }
+  
+  a {
+    color: var(--link-color);
+  }
+  
+  /* Mode sombre forcé */
+  body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --link-color: #bb86fc;
+  }
+  
+  /* Mode clair forcé */
+  body.light-mode {
+    --bg-color: #e5caff;
+    --text-color: #000000;
+    --link-color: #4a00e0;
+  }
+  #theme-toggle {
+    background: none;            /* Supprime le fond du bouton */
+    border: none;                /* Retire la bordure du bouton */
+    cursor: pointer;             /* Change le curseur pour indiquer que c'est cliquable */
+    padding: 0;                  /* Supprime toute marge ou padding autour du bouton */
+    display: flex;               /* Assure que l'icône est bien centrée */
+    align-items: center;         /* Centrer l'icône verticalement */
+    justify-content: center;     /* Centrer l'icône horizontalement */
+    position: fixed;             /* Le bouton sera fixe, donc toujours visible sur la page */
+    top: 5px;                   /* Place le bouton un peu en bas du haut de la page */
+    left: 5px;                 /* Place le bouton à 20px du bord droit */
+    z-index: 9999;               /* S'assure que le bouton reste au-dessus des autres éléments */
+  }
+  
+
+  
+  #theme-icon {
+    width: 32px;               /* Taille de l'icône (ajuste si nécessaire) */
+    height: 32px;              /* Taille de l'icône (ajuste si nécessaire) */
+    transition: transform 0.3s; /* Animation de transition pour l'icône (optionnelle) */
+  }
+
+/* Barre de navigation */
+.page-navigation {
+    z-index: 1000;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px; /* Réduit l'espacement entre les éléments */
+    width: auto;
+}
+
+/* Boutons flèche */
+.nav-arrow {
+    z-index: 1000;
+    background: none;
+    border: none;
+    font-size: 12px; /* Diminue la taille de la flèche */
+    cursor: pointer;
+    color: #9831ff;
+    transition: transform 0.2s;
+    width: 20px; /* 50% de 40px */
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Empêche la réduction */
+}
+
+/* Effet au survol */
+.nav-arrow:hover {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
+
+/* Cacher la flèche tout en conservant sa place */
+.nav-arrow.hidden {
+    opacity: 0; /* Rend invisible */
+    pointer-events: none; /* Désactive l'interaction */
+}
+
+/* Indicateur de page */
+.page-indicator {
+    z-index: 1000;
+	font-family: 'Droid Serif', serif;
+    color: #e5caff;
+    background: #9831ff;
+    
+    width: 20px; /* 50% de 40px */
+    height: 20px;
+    min-width: 20px; /* Garde la largeur fixe */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px; /* Ajuste la taille du texte */
+    cursor: pointer;
+    
+    transition: background 0.3s;
+    flex-shrink: 0; /* Garde la même taille */
+}
+.page-indicator:hover {transform: scale(1.06);
+    filter: brightness(1.2);}
+/* Menu déroulant */
+.page-dropdown {
+    z-index: 1000;
+    text-align: center;
+	font-family: 'Exo', sans-serif; /* Police Exo */
+    color: #9831ff; /* Couleur du texte */
+
+    display: none;
+    position: absolute;
+    top: 33px; /* Ajuste la position pour correspondre à la nouvelle taille */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #e5caff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 5px; /* Ajuste la taille pour s’adapter aux boutons réduits */
+}
+
+/* Liste du menu */
+.page-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+	
+    z-index: 1000;
+}
+
+/* Éléments du menu */
+.page-dropdown li {
+    padding: 4px 10px; /* Réduit la taille des éléments du menu */
+    cursor: pointer;
+    font-size: 12px; /* Ajuste la taille du texte */
+    transition: background 0.2s;
+}
+
+/* Effet au survol */
+.page-dropdown li:hover {
+    background: none; /* Supprime le changement de fond */
+    color: #ff0075; /* Change uniquement la couleur du texte */
+}
+/* Afficher le menu déroulant */
+.page-indicator.open + .page-dropdown {
+    display: block;
+}
+
+.main-content {
+    text-align: center;
+    margin-top: 0rem;
+}
+
+.main-title {
+    font-family: 'Alumni Sans Pinstripe', sans-serif; 
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: #9831ff; /* adapte selon ton thème */
+}
+
+.profile-image {
+    width: 400px; /* ajuste à ta convenance */
+    height: auto;
+     /* ou 50% pour un cercle */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+@media (max-width: 600px) {
+    .main-title {
+        font-size: 3.5rem;
+    }
+
+    .profile-image {
+        width: 300px;
+    }
+}
+
+/* Conteneur principal (image et menu) */
+.content-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Conteneur pour l'image et le menu latéral à droite */
+.image-container {
+    position: relative; /* Permet de positionner le menu par rapport à l'image */
+}
+
+/* Menu latéral (initialement caché) */
+.side-menu {
+    position: absolute;
+    top: 0;
+    left: 100%;  /* Positionne le menu juste à droite de l'image */
+    width: 50px;  /* Largeur des icônes */
+    height: 100%;
+    display: none;  /* Le menu est caché au départ */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: left 0.3s ease-in-out;
+    padding: 10px 0;
+}
+
+/* Liste d'icônes (réseaux sociaux) */
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu li {
+    margin: 20px 0;
+}
+
+.side-menu li a {
+    color: white;
+    font-size: 24px;  /* Taille des icônes */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.side-menu li a:hover {
+    color: #ff0075;  /* Couleur au survol */
+}
+
+/* Icône pour ouvrir/fermer le menu */
+#menu-toggle {
+    position: absolute;
+    top: -35px; /* Place le bouton légèrement au-dessus de l'image */
+    right: -40px; /* Place le bouton à droite de l'image */
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 9999;
+}
+#menu-toggle:hover {
+    transform: scale(1.1); /* Grossir légèrement le bouton */
+    filter: brightness(1.2); /* Légère augmentation de la luminosité */
+}
+/* Icône de menu */
+#menu-icon {
+    width: 24px;
+    height: 24px;
+}
+#side-menu ul li a img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease, filter 0.3s ease; /* pour un effet de transition fluide */
+}
+
+#side-menu ul li a:hover img {
+    transform: scale(1.1); /* Grossir l'icône de 10% */
+    filter: brightness(1.2); /* Augmenter légèrement la luminosité */
+}
+/* Animation de l'ouverture/fermeture du menu */
+.side-menu.open {
+    display: flex;  /* Affiche le menu */
+    left: 100%;  /* Le menu se déplace vers la droite de l'image */
+}
+
+/* Style pour l'image de profil */
+.profile-image {
+    width: 400px;  /* Taille de l'image de profil */
+    height: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Pour les petits écrans (mobile) */
+@media (max-width: 600px) {
+    .side-menu {
+        width: 40px; /* Réduit la largeur des icônes sur mobile */
+    }
+    .side-menu li a {
+        font-size: 18px;  /* Ajuste la taille des icônes */
+    }
+
+    .profile-image {
+        width: 300px;  /* Réduit la taille de l'image */
+    }
+}

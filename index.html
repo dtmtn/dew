@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dtmntn</title>
+    <link rel="icon" type="image/png" href="icon.png"> <!-- Icône de l'onglet -->
+  
+
+    <!-- Lien vers la feuille de style externe -->
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+    <div class="page-navigation">
+
+        <button id="prevPage" class="nav-arrow">◀</button>
+        <div class="page-indicator" id="pageIndicator">0</div>
+        <button id="nextPage" class="nav-arrow">▶</button>
+        
+        
+    </div>
+    <div class="page-dropdown" id="pageDropdown">
+            <ul id="pageList"></ul>
+            
+        </div>
+        
+    <button id="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="sun.png" width="32" height="32">
+      </button>
+
+      <!-- Conteneur pour l'image et le menu -->
+<div class="content-wrapper">
+    <div class="main-content">
+        <h1 class="main-title">diet mountain</h1>
+        
+        <!-- Icône pour ouvrir/fermer le menu -->
+        
+        
+        <!-- Image et le menu à droite (tous dans le même conteneur) -->
+        <div class="image-container">
+            <button id="menu-toggle" onclick="toggleMenu()">
+                <img id="menu-icon" src="menu-icon.png">
+            </button>
+            <img src="lain.png"  class="profile-image">
+            
+            <!-- Menu latéral à droite, dans le même conteneur -->
+            <div id="side-menu" class="side-menu">
+                <ul>
+                    <li><a href="https://x.com/dtmntn" target="_blank"><img src="x-icon.png"  width="24" height="24"></a></li>
+                    <li><a href="https://www.instagram.com/dt.mntn/" target="_blank"><img src="insta-icon.png"  width="24" height="24"></a></li>
+                    <li><a href="https://open.spotify.com/user/31ymmhutoy4mpfz6ymysshij43te" target="_blank"><img src="spotify-icon.png"  width="24" height="24"></a></li>
+                </ul>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="script-navigation.js"></script>
+<script src="theme.js"></script>
+<script src="reseau.js"></script>
+</body>
+</html>
